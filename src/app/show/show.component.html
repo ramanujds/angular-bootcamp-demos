@@ -1,0 +1,9 @@
+<p [innerHtml]="flag"></p>
+
+<input type="text" name="trainne" id="trainee" [(ngModel)]="trainee" #trainee_name>
+
+<button class="btn btn-primary" [hidden]="!trainee" (click)="fun(trainee_name.value)">Test</button>
+
+
+<h1>Hello {{trainee}} </h1>
+

@@ -1,0 +1,17 @@
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Price</th>
+        <td>Update</td>
+    </tr>
+
+<tr *ngFor="let b of bookService.books">
+    <td>{{b.id}}</td> 
+    <td>{{b.title|shorten:15|uppercase}}</td> 
+    <td>{{b.author|shorten}}</td> 
+    <td> {{b.price|currency:'INR'}} </td>
+    <td><button (click)="updateBook(b.id)" class="btn btn-secondary">Update</button></td>
+    </tr>
+    </table>

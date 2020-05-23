@@ -1,0 +1,31 @@
+
+<form (submit)="updateBook(f.value)" class="form-group" #f="ngForm">
+    <div>
+    <label for="id">ID</label>
+    <input readonly type="number" name="id" id="id" [(ngModel)]="id" ngModel class="form-control" #bId="ngModel" required
+                                [class.is-invalid]="bId.invalid && bId.touched">
+    <small *ngIf="bId.invalid && bId.touched" class="text-danger">ID is required</small>
+</div>
+<div>
+    <label for="title">Title</label>
+    <input type="text" name="title" id="title" [(ngModel)]="title" ngModel class="form-control" #bTitle="ngModel" required [class.is-invalid]="bTitle.invalid && bTitle.touched">
+    <small *ngIf="bTitle.invalid && bTitle.touched" class="text-danger">Title is required</small>
+</div>
+<div>
+    <label for="author">Author</label>
+    <input type="text" name="author" id="author" [(ngModel)]="author" ngModel class="form-control" #bAuthor="ngModel" required [class.is-invalid]="bAuthor.invalid && bAuthor.touched">
+    <small *ngIf="bAuthor.invalid && bAuthor.touched" class="text-danger">Author is required</small>
+</div>
+<div><label for="price">Price</label>
+    <input type="number" name="price" id="price" [(ngModel)]="price" ngModel class="form-control" #bPrice="ngModel" required [class.is-invalid]="bPrice.invalid && bPrice.touched">
+    <small *ngIf="bPrice.invalid && bPrice.touched" class="text-danger">Price is required</small>
+</div>
+    <button class="btn btn-success" [disabled]="!f.valid">Update</button>
+
+
+
+</form>
+
+
+
+<!-- for(Book b:books) -->
