@@ -7,11 +7,12 @@
         <td>Update</td>
     </tr>
 
-<tr *ngFor="let b of bookService.books">
+<tr *ngFor="let b of books">
     <td>{{b.id}}</td> 
     <td>{{b.title|shorten:15|uppercase}}</td> 
     <td>{{b.author|shorten}}</td> 
     <td> {{b.price|currency:'INR'}} </td>
     <td><button (click)="updateBook(b.id)" class="btn btn-secondary">Update</button></td>
+    <td><button (click)="deleteBook(b.id)" class="btn btn-danger">Delete</button></td>
     </tr>
     </table>

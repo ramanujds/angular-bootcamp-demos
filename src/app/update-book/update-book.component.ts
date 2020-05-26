@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Book } from '../book';
 import { ActivatedRoute } from '@angular/router';
 import { BookService } from '../book-service';
+import { BookApiService } from '../book-api.service';
 
 @Component({
   selector: 'app-update-book',
@@ -14,19 +15,23 @@ export class UpdateBookComponent implements OnInit {
   title;
   author;
   price;
-  constructor(private route: ActivatedRoute, private bookService: BookService) { }
+  constructor(private route: ActivatedRoute, private bookService: BookApiService) { }
 
   ngOnInit(): void {
 
     this.route.params.subscribe(
       (param) => {
         let id = param['id'];
-        this.book = this.bookService.getBook(id);
+        this.bookService.getBookById(id).subscribe(
+        (response)=>{
+          this.book=response;
         this.id=this.book.id;
         this.author=this.book.author;
         this.title=this.book.title;
         this.price=this.book.price
         console.log(this.book);
+        }
+        )
 
       }
     )
@@ -34,11 +39,12 @@ export class UpdateBookComponent implements OnInit {
   }
 
   updateBook(book: Book) {
-    if (this.bookService.updateBookById(book)) {
+    this.bookService.updateBook(book).subscribe(response=> {
       alert('Updated Successfully');
-    }
-    else {
+    },
+    err=>{
       alert('Book not found');
     }
-  }
+    )
+}
 }

@@ -3,6 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { AddBookComponent } from './add-book/add-book.component';
 import { ShowBookComponent } from './show-book/show-book.component';
 import { UpdateBookComponent } from './update-book/update-book.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
+import { BookReactiveComponent } from './book-reactive/book-reactive.component';
+import { CovidClientComponent } from './covid-client/covid-client.component';
 
 
 const routes: Routes = [
@@ -14,7 +17,21 @@ const routes: Routes = [
   },
   {
     path:'update-book/:id', component:UpdateBookComponent
+  },
+  {
+    path:'error', component:ErrorPageComponent
+  },
+  {
+    path:'book-reactive', component:BookReactiveComponent
+  },
+  {
+    path:'covid-info',component:CovidClientComponent
+  },
+  {
+    path:'**',redirectTo:'/error'
   }
+
+
 
 ];
 

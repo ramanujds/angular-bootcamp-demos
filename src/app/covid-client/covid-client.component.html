@@ -1,0 +1,10 @@
+<h3>Enter Country Name</h3>
+<input type="text" #tCountry>
+<button class="btn btn-primary" (click)="covidInfo(tCountry.value)">Enter</button>
+
+<div *ngIf="country">
+    <h2 class='cnf'>Confirmed : {{country.confirmed.value}}</h2>
+    <h2 class="rec">Recovered : {{country.recovered.value}}</h2>
+    <h2 class="death">Deaths : {{country.deaths.value}}</h2>
+
+</div>

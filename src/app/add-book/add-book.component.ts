@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Book } from '../book';
 import { BookService } from '../book-service';
 import { Router } from '@angular/router';
+import { BookApiService } from '../book-api.service';
 
 @Component({
   selector: 'app-add-book',
@@ -13,7 +14,7 @@ export class AddBookComponent implements OnInit {
   book:Book;
 
   
-  constructor(private bookService:BookService, private router:Router) { }
+  constructor(private bookService:BookApiService, private router:Router) { }
 
   ngOnInit(): void {
     this.book=new Book();
@@ -22,9 +23,17 @@ export class AddBookComponent implements OnInit {
   }
 
   addBook(f){
-    console.log(f);
-    this.bookService.books.push(f.value);
-    this.router.navigate(['/show-all']);
+    console.log(f.value);
+    this.bookService.addBook(f.value).subscribe(
+      response=>{
+          alert("Added Successfully")
+      },
+      error=>{
+        console.log(error);
+      }
+
+    )
+    //this.router.navigate(['/show-all']);
     
   }
 
